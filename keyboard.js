@@ -87,7 +87,11 @@ function displayChar(char, keyElement) {
 
 function handleKeyClick(char, keyElement) {
   keyElement.addEventListener("click", () => {
-    displayChar(char, keyElement);
+    if (keyElement.querySelector('.secondSymbol')) {
+      displayChar(keyElement.querySelector('.secondSymbol').textContent, keyElement);
+    } else {
+      displayChar(char, keyElement);
+    }
     setTimeout(() => {keyElement.classList.remove("key-click")}, 300);
   });
 }
@@ -95,7 +99,11 @@ function handleKeyClick(char, keyElement) {
 function handleKeyPress(char, keyElement) {
   document.addEventListener("keydown", (event) => {
     if (event.key === char) {
-      displayChar(char, keyElement);
+      if (keyElement.querySelector('.secondSymbol')) {
+        displayChar(keyElement.querySelector('.secondSymbol').textContent, keyElement);
+      } else {
+        displayChar(char, keyElement);
+      }
     }
   });
 }
@@ -126,6 +134,7 @@ buttons.forEach((button) => {
   handleKeyPress(button.char, button.keyElement);
   handleKeyUp(button.keyElement);
 });
+
 
 
 // Функционал backspace
