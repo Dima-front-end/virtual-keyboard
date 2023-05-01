@@ -92,7 +92,7 @@ function handleKeyClick(char, keyElement) {
     } else {
       displayChar(char, keyElement);
     }
-    setTimeout(() => {keyElement.classList.remove("key-click")}, 300);
+    setTimeout(() => {keyElement.classList.remove("key-click")}, 500);
   });
 }
 
@@ -143,14 +143,14 @@ const backspace = document.getElementById("backspace");
 backspace.addEventListener('click', () => {
   textarea.value = textarea.value.slice(0, -1);
   backspace.classList.add("key-click")
-  setTimeout(() => backspace.classList.remove("key-click"), 300);
+  setTimeout(() => backspace.classList.remove("key-click"), 500);
 });
 
 document.addEventListener("keydown", function(event) {
   if (event.key == "Backspace") {
     textarea.value = textarea.value.slice(0, -1);
     backspace.classList.add('key-click');
-    setTimeout(() => backspace.classList.remove("key-click"), 300);
+    setTimeout(() => backspace.classList.remove("key-click"), 500);
   }
 });
 
@@ -161,7 +161,7 @@ const keyTab = document.getElementById("keyTab");
 keyTab.addEventListener('click', () => {
   textarea.setRangeText("\t", textarea.selectionStart, textarea.selectionEnd, 'end');
   keyTab.classList.add("key-click")
-  setTimeout(() => keyTab.classList.remove("key-click"), 300);
+  setTimeout(() => keyTab.classList.remove("key-click"), 500);
 });
 
 document.addEventListener("keydown", function(event) {
@@ -169,7 +169,7 @@ document.addEventListener("keydown", function(event) {
     event.preventDefault();
     textarea.setRangeText("\t", textarea.selectionStart, textarea.selectionEnd, 'end');
     keyTab.classList.add("key-click")
-    setTimeout(() => keyTab.classList.remove("key-click"), 300);
+    setTimeout(() => keyTab.classList.remove("key-click"), 500);
   }
 });
 
@@ -180,7 +180,7 @@ document.getElementById("keyDel").addEventListener("click", () => {
   const newValue = value.substring(0, textarea.selectionStart) + value.substring(textarea.selectionEnd);
   textarea.value = newValue;
   keyDel.classList.add("key-click")
-  setTimeout(() => keyDel.classList.remove("key-click"), 300);
+  setTimeout(() => keyDel.classList.remove("key-click"), 500);
 });
 
 document.addEventListener("keydown", function(event) {
@@ -189,7 +189,7 @@ document.addEventListener("keydown", function(event) {
     const newValue = value.substring(0, textarea.selectionStart) + value.substring(textarea.selectionEnd);
     textarea.value = newValue;
     keyDel.classList.add("key-click")
-    setTimeout(() => keyDel.classList.remove("key-click"), 300);
+    setTimeout(() => keyDel.classList.remove("key-click"), 500);
   }
 });
 
@@ -214,12 +214,12 @@ const shiftRight = document.getElementById("keyShiftRight");
 
 shiftLeft.addEventListener('click', () => {
   shiftLeft.classList.add("key-click")
-  setTimeout(() => {shiftLeft.classList.remove("key-click")}, 300);
+  setTimeout(() => {shiftLeft.classList.remove("key-click")}, 500);
 });
 
 shiftRight.addEventListener('click', () => {
   shiftRight.classList.add("key-click")
-  setTimeout(() => {shiftRight.classList.remove("key-click")}, 300);
+  setTimeout(() => {shiftRight.classList.remove("key-click")}, 500);
 });
 
 document.addEventListener("keydown", (event) => {
@@ -250,7 +250,7 @@ document.getElementById("keyEnter").addEventListener('click', () => {
   textarea.selectionStart = textarea.value.length; // устанавливаем курсор на новую строку
   textarea.selectionEnd = textarea.value.length; // устанавливаем конечную позицию выделения на новую строку
   document.getElementById("keyEnter").classList.add('key-click');
-  setTimeout(() => {document.getElementById("keyEnter").classList.remove('key-click');}, 300);
+  setTimeout(() => {document.getElementById("keyEnter").classList.remove('key-click');}, 500);
 });
 
 
@@ -268,3 +268,29 @@ document.addEventListener("keyup", (event) => {
     document.getElementById("keyEnter").classList.remove('key-click');
   }
 })
+
+// Функционал стрелочек
+document.addEventListener('keydown', (event) => {
+  if (event.code === "ArrowLeft") {
+    textarea.value += '←';
+  } else if (event.code === "ArrowRight") {
+    textarea.value += "→";
+  } else if (event.code === "ArrowUp") {
+    textarea.value += "↑";
+  } else if (event.code === "ArrowDown") {
+    textarea.value += "↓"
+  }
+});
+
+document.getElementById('keyArrLeft').addEventListener('click', () => {
+  textarea.value += '←';
+});
+document.getElementById('keyArrDown').addEventListener('click', () => {
+  textarea.value += '↓';
+});
+document.getElementById('keyArrRight').addEventListener('click', () => {
+  textarea.value += '→';
+});
+document.getElementById('keyArrUp').addEventListener('click', () => {
+  textarea.value += '↑';
+});

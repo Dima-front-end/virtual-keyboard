@@ -85,7 +85,7 @@ h2 {
 .key-click {
     background-color: #8397e2 !important;
     transition: .2s;
-    border-radius: 8px;
+    border-radius: 14px;
 }
 .key-special {
     background-color: #2a3047;
