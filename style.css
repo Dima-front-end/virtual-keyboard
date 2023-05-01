@@ -69,8 +69,9 @@ h2 {
 .row-5__element:active,
 .key-special:active,
 .key-backspace:active {
-    background: #8397e2 !important;
+    background-color: #8397e2 !important;
     transition: .2s;
+    border-radius: 14px;
 }
 #textarea {
     width: 600px;
