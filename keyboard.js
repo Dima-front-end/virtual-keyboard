@@ -245,9 +245,26 @@ document.addEventListener("keyup", (event) => {
 });
 
 // Функционал Enter
-document.addEventListener('mousedown', (event) => {
-  if (event.code === "Enter")
+document.getElementById("keyEnter").addEventListener('click', () => {
   textarea.value += '\n'; // вставляем новую строку
   textarea.selectionStart = textarea.value.length; // устанавливаем курсор на новую строку
   textarea.selectionEnd = textarea.value.length; // устанавливаем конечную позицию выделения на новую строку
+  document.getElementById("keyEnter").classList.add('key-click');
+  setTimeout(() => {document.getElementById("keyEnter").classList.remove('key-click');}, 300);
 });
+
+
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Enter") {
+    textarea.value += '\n'; // вставляем новую строку
+    textarea.selectionStart = textarea.value.length; // устанавливаем курсор на новую строку
+    textarea.selectionEnd = textarea.value.length; // устанавливаем конечную позицию выделения на новую строку
+    document.getElementById("keyEnter").classList.add('key-click');
+  };
+});
+
+document.addEventListener("keyup", (event) => {
+  if (event.code === "Enter") {
+    document.getElementById("keyEnter").classList.remove('key-click');
+  }
+})
