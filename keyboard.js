@@ -150,7 +150,11 @@ document.addEventListener("keydown", function(event) {
   if (event.key == "Backspace") {
     textarea.value = textarea.value.slice(0, -1);
     backspace.classList.add('key-click');
-    setTimeout(() => backspace.classList.remove("key-click"), 500);
+  }
+});
+document.addEventListener("keyup", (event) => {
+  if (event.code === "Backspace") {
+    backspace.classList.remove("key-click");
   }
 });
 
@@ -169,7 +173,11 @@ document.addEventListener("keydown", function(event) {
     event.preventDefault();
     textarea.setRangeText("\t", textarea.selectionStart, textarea.selectionEnd, 'end');
     keyTab.classList.add("key-click")
-    setTimeout(() => keyTab.classList.remove("key-click"), 500);
+  }
+});
+document.addEventListener("keyup", (event) => {
+  if (event.code === "Tab") {
+    keyTab.classList.remove("key-click");
   }
 });
 
@@ -189,7 +197,11 @@ document.addEventListener("keydown", function(event) {
     const newValue = value.substring(0, textarea.selectionStart) + value.substring(textarea.selectionEnd);
     textarea.value = newValue;
     keyDel.classList.add("key-click")
-    setTimeout(() => keyDel.classList.remove("key-click"), 500);
+  }
+});
+document.addEventListener("keyup", (event) => {
+  if (event.code === "Delete") {
+    keyDel.classList.remove("key-click");
   }
 });
 
@@ -314,6 +326,7 @@ document.getElementById('keyArrUp').addEventListener('click', () => {
   textarea.value += '↑';
 });
 
+// Функционал ctrl
 document.addEventListener('keydown', (event) => {
   if (event.code === "ControlRight") {
     document.querySelector('#keyCtrl2').classList.add('key-click');
@@ -328,3 +341,31 @@ document.addEventListener('keyup', (event) => {
     document.querySelector('#keyCtrl1').classList.remove('key-click');
   }
 })
+
+//Фунционал Alt
+document.addEventListener('keydown', (event) => {
+  if (event.code === "AltLeft") {
+    document.querySelector('#keyAlt1').classList.add('key-click');
+  } else if (event.code === "AltRight") {
+    document.querySelector('#keyAlt2').classList.add('key-click');
+  };
+});
+document.addEventListener('keyup', (event) => {
+  if (event.code === "AltLeft") {
+    document.querySelector('#keyAlt1').classList.remove('key-click');
+  } else if (event.code === "AltRight") {
+    document.querySelector('#keyAlt2').classList.remove('key-click');
+  };
+});
+
+//Фунционал Win
+document.addEventListener('keydown', (event) => {
+  if (event.code === "MetaLeft") {
+    document.querySelector('#keyWin').classList.add('key-click');
+  }
+});
+document.addEventListener('keyup', (event) => {
+  if (event.code === "MetaLeft") {
+    document.querySelector('#keyWin').classList.remove('key-click');
+  }
+});
