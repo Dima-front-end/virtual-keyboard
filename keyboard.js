@@ -95,15 +95,12 @@ for (let i = 0; i < 10; i++) {
 
   document.addEventListener("keydown", (event) => {
     if (event.code === `Digit${digit}` && shiftLeft.classList.contains('key-click')) {
-      textarea.focus();
       textarea.value += key.querySelector('.secondSymbol').textContent;
       key.classList.add('key-click');
     } else if (event.code === `Digit${digit}` && shiftRight.classList.contains('key-click')) {
-      textarea.focus();
       textarea.value += key.querySelector('.secondSymbol').textContent;
       key.classList.add('key-click');
     } else if (event.code === `Digit${digit}`) {
-      textarea.focus();
       textarea.value += digit;
       key.classList.add('key-click');
     }
@@ -111,7 +108,6 @@ for (let i = 0; i < 10; i++) {
 
   document.addEventListener("keyup", (event) => {
     if (event.code === `Digit${digit}`) {
-      textarea.focus();
       key.classList.remove('key-click');
     }
   });
