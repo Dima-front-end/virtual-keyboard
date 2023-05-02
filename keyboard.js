@@ -1,5 +1,82 @@
 // Добавление textarea
 const textarea = document.getElementById('textarea');
+const rightShift = "ShiftRight";
+const rightCtrl = "ControlRight";
+let shiftPressed = false;
+let ctrlPressed = false;
+let fontSwitched = false;
+
+let functionOn = localStorage.getItem('functionOn') === 'true';
+
+function toggleFont() {
+  const engSym = document.querySelectorAll('.engSym');
+  const ruSym = document.querySelectorAll('.ruSym');
+  functionOn = !functionOn;
+
+  engSym.forEach(element => {
+    element.classList.toggle('hidden');
+  });
+  
+  ruSym.forEach(element => {
+    element.classList.toggle('hidden');
+  });
+
+  localStorage.setItem('functionOn', functionOn);
+}
+
+window.addEventListener('load', () => {
+  const engSym = document.querySelectorAll('.engSym');
+  const ruSym = document.querySelectorAll('.ruSym');
+
+  if (functionOn) {
+    engSym.forEach(element => {
+      element.classList.add('hidden');
+    });
+    ruSym.forEach(element => {
+      element.classList.remove('hidden');
+    });
+  } else {
+    engSym.forEach(element => {
+      element.classList.remove('hidden');
+    });
+    ruSym.forEach(element => {
+      element.classList.add('hidden');
+    });
+  }
+});
+
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === rightShift) {
+    if (ctrlPressed) {
+      toggleFont();
+      fontSwitched = true;
+    } else {
+      shiftPressed = true;
+    }
+  }
+  if (event.code === rightCtrl) {
+    if (shiftPressed) {
+      toggleFont();
+      fontSwitched = true;
+    } else {
+      ctrlPressed = true;
+    }
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.code === rightShift) {
+    shiftPressed = false;
+    fontSwitched = false;
+  }
+  if (event.code === rightCtrl) {
+    ctrlPressed = false;
+    fontSwitched = false;
+  }
+});
+
+
 
 
 // Отображения цифр 0-9
@@ -44,7 +121,7 @@ for (let i = 0; i < 10; i++) {
 // Отображения букв A-Z
 for (let i = 65; i <= 90; i++) {
   const key = document.querySelector(`#key${String.fromCharCode(i)}`);
-
+  const ruKey = document.querySelector(`#key${String.fromCharCode(i)}`).querySelector('.ruSym');
   key.addEventListener('mousedown', () => {
     if (capsLock.classList.contains('key-click')) {
       textarea.focus();
@@ -55,20 +132,38 @@ for (let i = 65; i <= 90; i++) {
     }
   });
 
+
+
   document.addEventListener("keydown", (event) => {
+    if (functionOn === false) {
+      if (event.code === `Key${String.fromCharCode(i)}` && capsLock.classList.contains("key-click")) {
+        textarea.value += String.fromCharCode(i).toUpperCase();
+        key.classList.add('key-click');
+      } else if (event.code === `Key${String.fromCharCode(i)}` && shiftLeft.classList.contains("key-click")) {
+        textarea.value += String.fromCharCode(i).toUpperCase();
+        key.classList.add('key-click');
+      } else if (event.code === `Key${String.fromCharCode(i)}` && shiftRight.classList.contains("key-click")) {
+        textarea.value += String.fromCharCode(i).toUpperCase();
+        key.classList.add('key-click');
+      } else if (event.code === `Key${String.fromCharCode(i)}`) {
+        textarea.value += String.fromCharCode(i).toLowerCase();
+        key.classList.add('key-click');
+      }
+    } else if (functionOn === true) {
     if (event.code === `Key${String.fromCharCode(i)}` && capsLock.classList.contains("key-click")) {
-      textarea.value += String.fromCharCode(i).toUpperCase();
+      textarea.value += ruKey.textContent.toUpperCase();
       key.classList.add('key-click');
     } else if (event.code === `Key${String.fromCharCode(i)}` && shiftLeft.classList.contains("key-click")) {
-      textarea.value += String.fromCharCode(i).toUpperCase();
+      textarea.value += ruKey.textContent.toUpperCase();
       key.classList.add('key-click');
     } else if (event.code === `Key${String.fromCharCode(i)}` && shiftRight.classList.contains("key-click")) {
-      textarea.value += String.fromCharCode(i).toUpperCase();
+      textarea.value += ruKey.textContent.toUpperCase();
       key.classList.add('key-click');
     } else if (event.code === `Key${String.fromCharCode(i)}`) {
-      textarea.value += String.fromCharCode(i).toLowerCase();
+      textarea.value += ruKey.textContent.toLowerCase();
       key.classList.add('key-click');
     }
+  }
   });
 
   document.addEventListener("keyup", (event) => {
