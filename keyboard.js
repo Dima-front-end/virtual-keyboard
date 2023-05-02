@@ -119,12 +119,22 @@ for (let i = 65; i <= 90; i++) {
   const key = document.querySelector(`#key${String.fromCharCode(i)}`);
   const ruKey = document.querySelector(`#key${String.fromCharCode(i)}`).querySelector('.ruSym');
   key.addEventListener('mousedown', () => {
-    if (capsLock.classList.contains('key-click')) {
-      textarea.focus();
-      textarea.value +=  String.fromCharCode(i).toUpperCase();
-    } else {
-      textarea.focus();
-      textarea.value +=  String.fromCharCode(i).toLowerCase();
+    if (functionOn === false) {
+      if (capsLock.classList.contains('key-click')) {
+        textarea.focus();
+        textarea.value +=  String.fromCharCode(i).toUpperCase();
+      } else {
+        textarea.focus();
+        textarea.value +=  String.fromCharCode(i).toLowerCase();
+      }
+    } else if (functionOn === true) {
+      if (capsLock.classList.contains('key-click')) {
+        textarea.focus();
+        textarea.value +=  ruKey.textContent.toUpperCase();
+      } else {
+        textarea.focus();
+        textarea.value +=  ruKey.textContent.toLowerCase();
+      }
     }
   });
 
@@ -390,16 +400,12 @@ document.addEventListener('keydown', (event) => {
 });
 document.addEventListener('keyup', (event) => {
   if (event.code === "ArrowLeft") {
-    textarea.value += '←';
     document.getElementById("keyArrLeft").classList.remove('key-click');
   } else if (event.code === "ArrowRight") {
-    textarea.value += "→";
     document.getElementById("keyArrRight").classList.remove('key-click');
   } else if (event.code === "ArrowUp") {
-    textarea.value += "↑";
     document.getElementById("keyArrUp").classList.remove('key-click');
   } else if (event.code === "ArrowDown") {
-    textarea.value += "↓"
     document.getElementById("keyArrDown").classList.remove('key-click');
   }
 });
