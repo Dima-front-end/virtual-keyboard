@@ -274,19 +274,30 @@ document.addEventListener('keydown', (event) => {
   if (event.code === "ArrowLeft") {
     textarea.value += '←';
     document.getElementById("keyArrLeft").classList.add('key-click');
-    setTimeout(() => {document.getElementById("keyArrLeft").classList.remove('key-click')}, 500);
   } else if (event.code === "ArrowRight") {
     textarea.value += "→";
     document.getElementById("keyArrRight").classList.add('key-click');
-    setTimeout(() => {document.getElementById("keyArrRight").classList.remove('key-click')}, 500);
   } else if (event.code === "ArrowUp") {
     textarea.value += "↑";
     document.getElementById("keyArrUp").classList.add('key-click');
-    setTimeout(() => {document.getElementById("keyArrUp").classList.remove('key-click')}, 500);
   } else if (event.code === "ArrowDown") {
     textarea.value += "↓"
     document.getElementById("keyArrDown").classList.add('key-click');
-    setTimeout(() => {document.getElementById("keyArrDown").classList.remove('key-click')}, 500);
+  }
+});
+document.addEventListener('keyup', (event) => {
+  if (event.code === "ArrowLeft") {
+    textarea.value += '←';
+    document.getElementById("keyArrLeft").classList.remove('key-click');
+  } else if (event.code === "ArrowRight") {
+    textarea.value += "→";
+    document.getElementById("keyArrRight").classList.remove('key-click');
+  } else if (event.code === "ArrowUp") {
+    textarea.value += "↑";
+    document.getElementById("keyArrUp").classList.remove('key-click');
+  } else if (event.code === "ArrowDown") {
+    textarea.value += "↓"
+    document.getElementById("keyArrDown").classList.remove('key-click');
   }
 });
 
@@ -302,3 +313,18 @@ document.getElementById('keyArrRight').addEventListener('click', () => {
 document.getElementById('keyArrUp').addEventListener('click', () => {
   textarea.value += '↑';
 });
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === "ControlRight") {
+    document.querySelector('#keyCtrl2').classList.add('key-click');
+  } else if (event.code === "ControlLeft") {
+    document.querySelector('#keyCtrl1').classList.add('key-click');
+  }
+})
+document.addEventListener('keyup', (event) => {
+  if (event.code === "ControlRight") {
+    document.querySelector('#keyCtrl2').classList.remove('key-click');
+  } else if (event.code === "ControlLeft") {
+    document.querySelector('#keyCtrl1').classList.remove('key-click');
+  }
+})
