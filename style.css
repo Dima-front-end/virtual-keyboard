@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+}
+#keyboard {
+    margin: 0 auto;
+    height: 250px;
+    width: 710px;
+    background: #444c6f;
+    border: 3px solid #222222;
+    border-radius: 5px;
+    padding: 2px 0;
+}
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    color: #222222;
+}
+.hidden {
+    display: none;
+}
+.lighter {
+    color:#444444;
+    margin-top: 15px;
+}
+.row-1,
+.row-2,
+.row-3,
+.row-4,
+.row-5 {
+    display: flex;
+    margin-bottom: 5px;
+    height: 40px;
+    margin-top: 5px;
+}
+.row-1__element,
+.row-2__element,
+.row-3__element,
+.row-4__element,
+.row-5__element  {
+    display: flex;
+    justify-content: center;
+    margin: 0 4px;
+    border-radius: 4px;
+    color: #ffffff;
+    background-color: #636b9b;
+    text-align: center;
+    cursor: pointer;
+    width: 38px;
+    transition: .3s;
+    line-height: 40px;
+}
+.row-1__element:hover,
+.row-2__element:hover,
+.row-3__element:hover,
+.row-4__element:hover,
+.row-5__element:hover,
+.key-backspace:hover {
+    background-color: #131723 !important;
+    transition: .3s;
+}
+.row-1__element:active,
+.row-2__element:active,
+.row-3__element:active,
+.row-4__element:active,
+.row-5__element:active,
+.key-special:active,
+.key-backspace:active {
+    background-color: #8397e2 !important;
+    transition: .2s;
+    border-radius: 14px;
+}
+#textarea {
+    width: 600px;
+    height: 200px;
+    display: block;
+    margin: 5px auto;
+    color: #444444;
+    margin-top: 100px;
+    border: 1px solid #888888;
+    padding: 10px;
+}
+.key-click {
+    background-color: #8397e2 !important;
+    transition: .2s;
+    border-radius: 14px;
+}
+.key-special {
+    background-color: #2a3047;
+}
+.secondSymbol {
+    font-size: 10px;
+    margin-left: -10px;
+    margin-right: 4px;
+    margin-top: -11px;
+}
+
+.key-backspace {
+    width: 100px;
+    background-color: #2a3047;
+}
